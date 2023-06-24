@@ -2,6 +2,7 @@
   "name": "hackernews",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -12,13 +13,17 @@
     "test:unit": "vitest",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
     "format": "prettier --plugin-search-dir . --write .",
-    "format:check": "prettier --plugin-search-dir . --check ."
+    "format:check": "prettier --plugin-search-dir . --check .",
+    "db:generate": "pnpm drizzle-kit generate:pg",
+    "db:up": "pnpm drizzle-kit up:pg"
   },
   "devDependencies": {
     "@playwright/test": "1.28.1",
     "@sveltejs/adapter-auto": "2.0.0",
     "@sveltejs/kit": "1.20.4",
+    "@types/pg": "8.10.2",
     "autoprefixer": "10.4.14",
+    "drizzle-kit": "0.19.2",
     "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-svelte": "2.30.0",
@@ -33,5 +38,10 @@
     "vite": "4.3.6",
     "vitest": "0.25.3"
   },
-  "type": "module"
+  "dependencies": {
+    "@lucia-auth/adapter-postgresql": "1.0.1",
+    "drizzle-orm": "0.27.0",
+    "lucia-auth": "1.8.0",
+    "pg": "8.11.0"
+  }
 }
