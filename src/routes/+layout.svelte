@@ -8,7 +8,7 @@
 </script>
 
 <div
-  class="min-h-screen grid grid-rows-[auto,1fr] bg-neutral-900 text-zinc-200"
+  class="grid min-h-screen grid-rows-[auto,1fr] bg-neutral-900 text-zinc-200"
 >
   <header class="border-b border-b-neutral-600 bg-neutral-800">
     <nav
