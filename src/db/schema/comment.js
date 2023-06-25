@@ -19,9 +19,11 @@ export const comment = pgTable(
       .references(() => user.id, {
         onDelete: "set null",
       }),
-    story_id: integer("story_id").notNull().references(() => story.id, {
-      onDelete: "cascade"
-    }),
+    story_id: integer("story_id")
+      .notNull()
+      .references(() => story.id, {
+        onDelete: "cascade",
+      }),
     parent_id: integer("parent_id"),
     created_at: timestamp("created_at").notNull().defaultNow(),
   },
@@ -29,8 +31,8 @@ export const comment = pgTable(
     return {
       parentReference: foreignKey({
         columns: [table.parent_id],
-        foreignColumns: [table.id]
-      })
-    }
-  }
-)
+        foreignColumns: [table.id],
+      }),
+    };
+  },
+);

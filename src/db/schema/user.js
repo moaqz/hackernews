@@ -1,4 +1,12 @@
-import { pgTable, bigint, varchar, boolean, integer, timestamp } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  bigint,
+  varchar,
+  boolean,
+  integer,
+  timestamp,
+  uniqueIndex,
+} from "drizzle-orm/pg-core";
 
 export const user = pgTable("auth_user", {
   id: varchar("id", { length: 15 }).primaryKey(),
@@ -6,6 +14,10 @@ export const user = pgTable("auth_user", {
   about: varchar("about"),
   karma: integer("karma").default(0),
   created_at: timestamp("created_at").notNull().defaultNow(),
+}, (table) => {
+  return {
+    usernameIdx: uniqueIndex("username_idx").on(table.username)
+  }
 });
 
 export const session = pgTable("auth_session", {
