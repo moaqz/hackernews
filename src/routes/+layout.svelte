@@ -21,7 +21,7 @@
       <div
         class="order-2 col-span-2 flex items-center space-x-4 overflow-auto pb-2 sm:order-1 sm:col-span-1 sm:pb-0"
       >
-        <Navlink path="/new" text="New" />
+        <Navlink path="/newest" text="New" />
         {#if data.user}
           <Navlink path="/threads" text="Threads" />
         {/if}
@@ -37,7 +37,7 @@
         class="order-1 flex items-center space-x-2 justify-self-end sm:order-2"
       >
         {#if data.user}
-          <span>{data.user.username}</span>
+          <a href="/user/{data.user.username}">{data.user.username}</a>
           <span>|</span>
           <form method="post" action="/logout" use:enhance>
             <input

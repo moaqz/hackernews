@@ -29,8 +29,8 @@ export const actions = {
     if (username.length > 50 || username.length < 2) {
       return fail(400, {
         invalid: true,
-        message: "username must be between 2 and 50 characters"
-      })
+        message: "username must be between 2 and 50 characters",
+      });
     }
 
     if (password.length > 50 || password.length < 8) {
@@ -52,11 +52,14 @@ export const actions = {
       locals.auth.setSession(session);
     } catch (err) {
       if (err instanceof LuciaError) {
-        if (err.message === "AUTH_INVALID_KEY_ID" || err.message === "AUTH_INVALID_PASSWORD") {
+        if (
+          err.message === "AUTH_INVALID_KEY_ID" ||
+          err.message === "AUTH_INVALID_PASSWORD"
+        ) {
           return fail(401, {
             invalid: true,
-            message: "username or password is incorrect"
-          })
+            message: "username or password is incorrect",
+          });
         }
       }
 

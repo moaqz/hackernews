@@ -6,7 +6,7 @@
 </script>
 
 <div
-  class="flex gap-2 items-center rounded-lg bg-zinc-700 p-4 text-zinc-300"
+  class="flex items-center gap-2 rounded-lg bg-zinc-700 p-4 text-zinc-300"
   transition:fly={{ y: -4 }}
 >
   <div
@@ -28,4 +28,3 @@
   </div>
   <p class="text-sm capitalize">{message}</p>
 </div>
-

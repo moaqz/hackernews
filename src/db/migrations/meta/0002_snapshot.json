@@ -1,8 +1,8 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "5115c051-52a5-49ac-a825-3a70826af689",
-  "prevId": "fb696cac-e7b9-452b-898c-4aa1e3c42688",
+  "id": "ad95e1ee-ccd2-44ec-907e-ac0fb0221f31",
+  "prevId": "5115c051-52a5-49ac-a825-3a70826af689",
   "tables": {
     "comments": {
       "name": "comments",
@@ -161,7 +161,7 @@
           "name": "score",
           "type": "integer",
           "primaryKey": false,
-          "notNull": false,
+          "notNull": true,
           "default": 0
         },
         "created_at": {
@@ -195,6 +195,53 @@
           "onUpdate": "no action"
         }
       },
+      "compositePrimaryKeys": {}
+    },
+    "auth_user": {
+      "name": "auth_user",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "varchar(15)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(40)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "about": {
+          "name": "about",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "karma": {
+          "name": "karma",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 0
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "username_idx": {
+          "name": "username_idx",
+          "columns": ["username"],
+          "isUnique": true
+        }
+      },
+      "foreignKeys": {},
       "compositePrimaryKeys": {}
     },
     "votes": {
@@ -332,53 +379,6 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {}
-    },
-    "auth_user": {
-      "name": "auth_user",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "varchar(15)",
-          "primaryKey": true,
-          "notNull": true
-        },
-        "username": {
-          "name": "username",
-          "type": "varchar(40)",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "about": {
-          "name": "about",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "karma": {
-          "name": "karma",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false,
-          "default": 0
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
-        }
-      },
-      "indexes": {
-        "username_idx": {
-          "name": "username_idx",
-          "columns": ["username"],
-          "isUnique": true
-        }
-      },
-      "foreignKeys": {},
       "compositePrimaryKeys": {}
     }
   },

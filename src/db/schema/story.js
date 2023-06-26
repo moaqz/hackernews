@@ -20,7 +20,7 @@ export const story = pgTable(
     title: varchar("title").notNull(),
     content: varchar("content").notNull(),
     url: varchar("url"),
-    score: integer("score").default(0),
+    score: integer("score").default(0).notNull(),
     created_at: timestamp("created_at").defaultNow().notNull(),
   },
   (table) => {

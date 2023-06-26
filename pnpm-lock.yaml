@@ -4,6 +4,9 @@ dependencies:
   '@lucia-auth/adapter-postgresql':
     specifier: 1.0.1
     version: 1.0.1(lucia-auth@1.8.0)(pg@8.11.0)
+  dayjs:
+    specifier: 1.11.8
+    version: 1.11.8
   drizzle-orm:
     specifier: 0.27.0
     version: 0.27.0(@types/pg@8.10.2)(pg@8.11.0)
@@ -1044,6 +1047,10 @@ packages:
       es5-ext: 0.10.62
       type: 1.2.0
     dev: true
+
+  /dayjs@1.11.8:
+    resolution: {integrity: sha512-LcgxzFoWMEPO7ggRv1Y2N31hUf2R0Vj7fuy/m+Bg1K8rr+KAs1AEy4y9jd5DXe8pbHgX+srkHNS7TH6Q6ZhYeQ==}
+    dev: false
 
   /debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}

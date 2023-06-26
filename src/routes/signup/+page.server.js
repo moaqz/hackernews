@@ -18,8 +18,8 @@ export const actions = {
     if (username.length > 50 || username.length < 2) {
       return fail(400, {
         invalid: true,
-        message: "username must be between 2 and 50 characters"
-      })
+        message: "username must be between 2 and 50 characters",
+      });
     }
 
     if (password.length > 50 || password.length < 8) {
@@ -49,8 +49,8 @@ export const actions = {
         if (err.code === "23505") {
           return fail(409, {
             invalid: true,
-            message: `Username '${username}' already exists.`
-          })
+            message: `Username '${username}' already exists.`,
+          });
         }
       }
 
