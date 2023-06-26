@@ -7,9 +7,7 @@
   export let data;
 </script>
 
-<div
-  class="grid min-h-screen grid-rows-[auto,1fr] bg-neutral-900 text-zinc-200"
->
+<div class="min-h-screen bg-neutral-900 text-zinc-200">
   <header class="border-b border-b-neutral-600 bg-neutral-800">
     <nav
       class="mx-auto grid max-w-4xl grid-cols-2 grid-rows-2 items-center gap-4 px-3 py-4 sm:grid-cols-[auto,1fr,auto] sm:grid-rows-1"
