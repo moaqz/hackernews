@@ -13,20 +13,20 @@
     <li>Karma: {data.profile.karma}</li>
     {#if data.profile.about}
       <li>
-        <span class="inline-block mb-1">About:</span>
+        <span class="mb-1 inline-block">About:</span>
         <pre class="whitespace-pre-wrap break-words">{data.profile.about}</pre>
       </li>
     {/if}
   </ul>
 
-  <div class="flex items-center gap-3 mb-4">
+  <div class="mb-4 flex items-center gap-3">
     <a
       href="/user/{data.profile.username}/submissions"
-      class="underline text-zinc-300 hover:text-zinc-50">submissions</a
+      class="text-zinc-300 underline hover:text-zinc-50">submissions</a
     >
     <a
       href="/user/{data.profile.username}/comments"
-      class="underline text-zinc-300 hover:text-zinc-50">comments</a
+      class="text-zinc-300 underline hover:text-zinc-50">comments</a
     >
   </div>
 
