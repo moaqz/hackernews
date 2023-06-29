@@ -52,12 +52,8 @@
           "name": "comments_author_id_auth_user_id_fk",
           "tableFrom": "comments",
           "tableTo": "auth_user",
-          "columnsFrom": [
-            "author_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["author_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -65,12 +61,8 @@
           "name": "comments_story_id_stories_id_fk",
           "tableFrom": "comments",
           "tableTo": "stories",
-          "columnsFrom": [
-            "story_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["story_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -78,12 +70,8 @@
           "name": "comments_parent_id_comments_id_fk",
           "tableFrom": "comments",
           "tableTo": "comments",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -142,16 +130,12 @@
       "indexes": {
         "story_title_idx": {
           "name": "story_title_idx",
-          "columns": [
-            "title"
-          ],
+          "columns": ["title"],
           "isUnique": false
         },
         "story_author_id_idx": {
           "name": "story_author_id_idx",
-          "columns": [
-            "author_id"
-          ],
+          "columns": ["author_id"],
           "isUnique": false
         }
       },
@@ -160,12 +144,8 @@
           "name": "stories_author_id_auth_user_id_fk",
           "tableFrom": "stories",
           "tableTo": "auth_user",
-          "columnsFrom": [
-            "author_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["author_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         }
@@ -212,9 +192,7 @@
       "indexes": {
         "username_idx": {
           "name": "username_idx",
-          "columns": [
-            "username"
-          ],
+          "columns": ["username"],
           "isUnique": true
         }
       },
@@ -244,12 +222,8 @@
           "name": "votes_user_id_auth_user_id_fk",
           "tableFrom": "votes",
           "tableTo": "auth_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "set null",
           "onUpdate": "no action"
         },
@@ -257,12 +231,8 @@
           "name": "votes_story_id_stories_id_fk",
           "tableFrom": "votes",
           "tableTo": "stories",
-          "columnsFrom": [
-            "story_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["story_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -270,10 +240,7 @@
       "compositePrimaryKeys": {
         "votes_story_id_user_id": {
           "name": "votes_story_id_user_id",
-          "columns": [
-            "story_id",
-            "user_id"
-          ]
+          "columns": ["story_id", "user_id"]
         }
       }
     },
@@ -318,12 +285,8 @@
           "name": "auth_key_user_id_auth_user_id_fk",
           "tableFrom": "auth_key",
           "tableTo": "auth_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -365,12 +328,8 @@
           "name": "auth_session_user_id_auth_user_id_fk",
           "tableFrom": "auth_session",
           "tableTo": "auth_user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }

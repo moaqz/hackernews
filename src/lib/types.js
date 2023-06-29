@@ -8,6 +8,6 @@
  * @property {Object} author
  * @property {string} author.username
  * @property {string} author.id
-*/
+ */
 
-export const Types = {}
+export const Types = {};

@@ -2,6 +2,7 @@
   import "../app.css";
   import Navlink from "@/components/navlink.svelte";
   import { enhance } from "$app/forms";
+  import Button from "@/components/button.svelte";
 
   /** @type {import("./$types").PageData}*/
   export let data;
@@ -38,18 +39,11 @@
           <a href="/user/{data.user.username}">{data.user.username}</a>
           <span>|</span>
           <form method="post" action="/logout" use:enhance>
-            <input
-              type="submit"
-              value="Sign out"
-              class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors hover:bg-yellow-500 focus:bg-yellow-500"
-            />
+            <Button>Sign out</Button>
           </form>
         {:else}
-          <a
-            href="/signin"
-            class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors hover:bg-yellow-500 focus:bg-yellow-500"
-            >Sign in</a
-          >{/if}
+          <Button href="/signin">Sign in</Button>
+        {/if}
       </div>
     </nav>
   </header>

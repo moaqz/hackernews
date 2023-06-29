@@ -1,5 +1,6 @@
 <script>
   import { enhance } from "$app/forms";
+  import Button from "@/components/button.svelte";
   import FormGroup from "@/components/form-group.svelte";
 </script>
 
@@ -28,11 +29,7 @@
       />
     </div>
 
-    <input
-      type="submit"
-      value="Submit"
-      class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors hover:bg-yellow-500 focus:bg-yellow-500"
-    />
+    <Button>Submit</Button>
 
     <p class="text-sm text-zinc-300">
       If there is no url, text will appear at the top of the thread.

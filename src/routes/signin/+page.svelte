@@ -1,6 +1,7 @@
 <script>
   import { enhance } from "$app/forms";
   import Alert from "@/components/alert.svelte";
+  import Button from "@/components/button.svelte";
   import FormGroup from "@/components/form-group.svelte";
 
   let submitting = false;
@@ -44,12 +45,13 @@
       labelText="Password"
     />
 
-    <input
-      type="submit"
-      value={submitting ? "Submitting..." : "Continue"}
-      disabled={submitting}
-      class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors enabled:hover:bg-yellow-500 enabled:focus:bg-yellow-500 disabled:opacity-50"
-    />
+    <Button disabled={submitting}>
+      {#if submitting}
+        Submitting...
+      {:else}
+        Continue
+      {/if}
+    </Button>
 
     <a
       href="/signup"

@@ -25,7 +25,7 @@
   </p>
 
   <div
-    class="ml-1 pl-2 border-l-2 border-l-zinc-700 hover:border-l-yellow-500 space-y-2 transition-colors"
+    class="ml-1 space-y-2 border-l-2 border-l-zinc-700 pl-2 transition-colors hover:border-l-yellow-500"
   >
     <pre
       class="whitespace-pre-wrap break-words font-sans text-gray-300">{comment.content}</pre>
@@ -33,13 +33,13 @@
     <div class="flex items-center gap-1">
       <a
         href="/reply?id={comment.id}&item={comment.story_id}"
-        class="inline-flex items-center gap-3 px-2 py-1 rounded-md text-gray-400 hover:bg-zinc-700 hover:text-zinc-50 transition-colors"
+        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-400 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
       >
         <Message /> <span>Reply</span>
       </a>
 
       <button
-        class="inline-flex items-center gap-3 px-2 py-1 rounded-md text-gray-400 hover:bg-zinc-700 hover:text-zinc-50 transition-colors"
+        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-400 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
         on:click={() => (repliesDisplayed = !repliesDisplayed)}
       >
         <PanelOpen /> <span>Show replies</span>
@@ -62,7 +62,7 @@
             </p>
 
             <div
-              class="ml-1 pl-2 border-l-2 border-l-zinc-700 hover:border-l-yellow-500 space-y-2 transition-colors"
+              class="ml-1 space-y-2 border-l-2 border-l-zinc-700 pl-2 transition-colors hover:border-l-yellow-500"
             >
               <pre
                 class="whitespace-pre-wrap break-words font-sans text-gray-300">{reply.content}</pre>

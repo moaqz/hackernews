@@ -5,12 +5,12 @@ import { and, eq } from "drizzle-orm";
 
 /** @type {import('./$types').RequestHandler} */
 export async function GET({ params, url }) {
-  const parentId = url.searchParams.get("parentId")
+  const parentId = url.searchParams.get("parentId");
 
   if (!parentId) {
     throw error(400, {
-      message: "missing parent id"
-    })
+      message: "missing parent id",
+    });
   }
 
   try {

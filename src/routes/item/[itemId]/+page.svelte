@@ -2,6 +2,7 @@
   import CommentFeed from "@/components/comment-feed.svelte";
   import { formatDate } from "@/lib/date";
   import { enhance } from "$app/forms";
+  import Button from "@/components/button.svelte";
 
   /** @type {import("./$types").PageData}*/
   export let data;
@@ -79,21 +80,17 @@
           hidden
         />
 
-        <input
-          type="submit"
-          value={loading ? "Adding comment..." : "Add comment"}
-          disabled={loading}
-          class="w-fit rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors enabled:hover:bg-yellow-500 enabled:focus:bg-yellow-500 disabled:opacity-50"
-        />
+        <Button disabled={loading} wfull={false}>
+          {#if loading}
+            Adding comment...
+          {:else}
+            Add comment
+          {/if}
+        </Button>
       </form>
     </div>
   {:else}
-    <a
-      href="/signin"
-      class="w-fit rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors hover:bg-yellow-500 focus:bg-yellow-500"
-    >
-      Login to comment
-    </a>
+    <Button href="/signin" wfull={false}>Login to comment</Button>
   {/if}
 </div>
 

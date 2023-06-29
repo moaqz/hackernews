@@ -3,6 +3,7 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import Alert from "@/components/alert.svelte";
+  import Button from "@/components/button.svelte";
 
   const parentId = $page.url.searchParams.get("id");
   const storyId = $page.url.searchParams.get("item");
@@ -15,7 +16,7 @@
 
 <div class="px-3 py-12">
   <form
-    class="flex flex-col gap-3 max-w-sm mx-auto"
+    class="mx-auto flex max-w-sm flex-col gap-3"
     method="post"
     use:enhance={() => {
       loading = true;
@@ -48,11 +49,12 @@
     <input type="text" value={storyId} id="storyId" name="storyId" hidden />
     <input type="text" value={parentId} id="parentId" name="parentId" hidden />
 
-    <input
-      type="submit"
-      value={loading ? "Adding reply..." : "Reply"}
-      disabled={loading}
-      class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors enabled:hover:bg-yellow-500 enabled:focus:bg-yellow-500 disabled:opacity-50"
-    />
+    <Button disabled={loading}>
+      {#if loading}
+        Adding reply...
+      {:else}
+        Reply
+      {/if}
+    </Button>
   </form>
 </div>
