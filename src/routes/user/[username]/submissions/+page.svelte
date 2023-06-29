@@ -13,7 +13,7 @@
       {/each}
     </ul>
   {:else}
-    <p class="text-center text-2xl text-zinc-50 py-8">
+    <p class="py-8 text-center text-2xl text-zinc-50">
       This user does not have any submission yet
     </p>
   {/if}

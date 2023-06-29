@@ -2,7 +2,7 @@ import { redirect } from "@sveltejs/kit";
 import { db } from "@/db";
 import { user } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { fail } from '@sveltejs/kit';
+import { fail } from "@sveltejs/kit";
 
 /** @type {import("./$types").PageServerLoad} */
 export const load = async ({ locals, params }) => {
@@ -14,12 +14,10 @@ export const load = async ({ locals, params }) => {
 
   const profile = await db
     .select({
-      about: user.about
+      about: user.about,
     })
     .from(user)
-    .where(
-      eq(user.username, params.username)
-    );
+    .where(eq(user.username, params.username));
 
   return { profile: profile[0] };
 };
@@ -27,14 +25,14 @@ export const load = async ({ locals, params }) => {
 /** @type {import('./$types').Actions} */
 export const actions = {
   default: async ({ locals, request }) => {
-    const session = await locals.auth.validate()
+    const session = await locals.auth.validate();
 
     if (!session || session.state !== "active") {
-      throw redirect(303, "/login")
+      throw redirect(303, "/login");
     }
 
-    const form = await request.formData()
-    const about = form.get("about")
+    const form = await request.formData();
+    const about = form.get("about");
 
     if (about != null && about.length > 800) {
       return fail(400, {
@@ -49,13 +47,11 @@ export const actions = {
         .set({
           about: about?.toString(),
         })
-        .where(
-          eq(user.id, session.userId)
-        )
+        .where(eq(user.id, session.userId));
 
-      return { success: true }
+      return { success: true };
     } catch (error) {
-      return fail(500)
+      return fail(500);
     }
-  }
-}
+  },
+};
