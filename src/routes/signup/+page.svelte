@@ -32,7 +32,7 @@
       minlength="2"
       maxlength="50"
       id="username"
-      value="lop"
+      value=""
       labelText="Username"
     />
 
@@ -41,7 +41,7 @@
       minlength="8"
       maxlength="50"
       id="password"
-      value="12345678"
+      value=""
       type="password"
       labelText="Password"
     />

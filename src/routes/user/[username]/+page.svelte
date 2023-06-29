@@ -14,7 +14,7 @@
     {#if data.profile.about}
       <li>
         <span class="mb-1 inline-block">About:</span>
-        <pre class="whitespace-pre-wrap break-words">{data.profile.about}</pre>
+        <pre class="whitespace-pre-wrap break-words font-sans">{data.profile.about}</pre>
       </li>
     {/if}
   </ul>
