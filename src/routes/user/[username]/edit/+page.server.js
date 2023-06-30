@@ -3,6 +3,7 @@ import { db } from "@/db";
 import { user } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { fail } from "@sveltejs/kit";
+import { redis } from "@/lib/redis";
 
 /** @type {import("./$types").PageServerLoad} */
 export const load = async ({ locals, params }) => {
@@ -42,12 +43,14 @@ export const actions = {
     }
 
     try {
-      await db
+      const profile = await db
         .update(user)
-        .set({
-          about: about?.toString(),
-        })
-        .where(eq(user.id, session.userId));
+        .set({ about: about?.toString() })
+        .where(eq(user.id, session.userId))
+        .returning({ username: user.username });
+
+      // invalidate cache
+      await redis.del(`profile:${profile[0].username}`);
 
       return { success: true };
     } catch (error) {

@@ -70,7 +70,7 @@
           name="content"
           placeholder="What are your thoughts?"
           required
-           class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
 
         <input

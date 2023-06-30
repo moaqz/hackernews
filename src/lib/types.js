@@ -1,13 +1,17 @@
 /**
- * @exports @typedef Comment
+ * @typedef {Object} Author
+ * @property {string} id
+ * @property {string} username
+*/
+
+/**
+ * @typedef Comment
  * @property {number} id
  * @property {string} content
  * @property {number | null} parent_id
  * @property {number} story_id
  * @property {Date | string} created_at
- * @property {Object} author
- * @property {string} author.username
- * @property {string} author.id
+ * @property {Author} author
  */
 
 /**
@@ -35,9 +39,16 @@
  * @property {string | null} url
  * @property {Date} created_at
  * @property {number} score
- * @property {Object} author
- * @property {string} author.username
- * @property {string} author.id
+ * @property {Author} author
  */
+
+/**
+ * @typedef CommentCard
+ * @property {number} id
+ * @property {string} content
+ * @property {number} story_id
+ * @property {string} story_title
+ * @property {Author} author
+*/
 
 export const Types = {};

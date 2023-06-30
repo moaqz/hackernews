@@ -48,7 +48,7 @@
         minlength="1"
         maxlength="800"
         value={data.profile.about}
-        class="resize-y min-h-[400px] rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        class="min-h-[400px] resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
       />
     </div>
 

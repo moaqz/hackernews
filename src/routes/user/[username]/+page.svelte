@@ -15,18 +15,18 @@
 
   <ul class="my-4 space-y-1">
     <li>
-      <span class="text-gray-300 font-semibold">Created:</span>
+      <span class="font-semibold text-gray-300">Created:</span>
       <span>{date}</span>
     </li>
 
     <li>
-      <span class="text-gray-300 font-semibold">Karma:</span>
+      <span class="font-semibold text-gray-300">Karma:</span>
       <span>{data.profile.karma}</span>
     </li>
 
     {#if data.profile.about}
       <li>
-        <span class="text-gray-300 font-semibold">About:</span>
+        <span class="font-semibold text-gray-300">About:</span>
         <pre class="whitespace-pre-wrap break-words font-sans">{data.profile
             .about}</pre>
       </li>

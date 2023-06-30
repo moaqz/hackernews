@@ -10,7 +10,7 @@
 <a
   href={path}
   class={$page.url.pathname === path
-    ? "text-white font-semibold"
+    ? "font-semibold text-white"
     : "font-semibold text-gray-400 hover:text-white hover:transition-colors"}
 >
   {text}
