@@ -26,7 +26,7 @@
       <Alert message={form.message} />
     {/if}
 
-    <h1 class="mb-4 text-3xl font-semibold">Sign in</h1>
+    <h1 class="mb-4 text-3xl font-semibold text-gray-300">Sign in</h1>
 
     <FormGroup
       required
@@ -55,7 +55,7 @@
 
     <a
       href="/signup"
-      class="text-sm text-zinc-300 transition-colors hover:text-zinc-100 hover:underline focus:text-zinc-100 focus:underline"
+      class="text-sm transition-colors hover:text-gray-300 hover:underline focus:text-gray-300 focus:underline"
       >New to Hackernews? Create account</a
     >
   </form>

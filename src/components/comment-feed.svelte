@@ -12,7 +12,7 @@
   });
 </script>
 
-<div class="mx-6 border-t border-t-zinc-700">
+<div class="mx-6 border-t border-t-brand-base-content/10">
   {#each comments as comment}
     <Comment {comment} />
   {/each}

@@ -14,9 +14,9 @@
 </script>
 
 <div class="flex flex-col space-y-1">
-  <label for={id} class="text-zinc-300">{labelText}</label>
+  <label for={id} class="text-gray-400">{labelText}</label>
   <input
-    class="rounded-sm border border-zinc-600 bg-zinc-700 px-2 py-1 outline-none focus:ring-2 focus:ring-zinc-500"
+    class="rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     use:typeAction
     {id}
     name={id}

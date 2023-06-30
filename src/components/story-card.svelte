@@ -2,24 +2,7 @@
   import { formatDate } from "@/lib/date";
   import ArrowUp from "./icons/arrow-up.svelte";
 
-  /**
-   * @typedef Votes
-   * @property {string} user_id
-   * @property {number} story_id
-   */
-
-  /** @typedef Story
-   * @property {number} id
-   * @property {string} title
-   * @property {string} content
-   * @property {string | null} url
-   * @property {number} score
-   * @property {string | Date} created_at
-   * @property {string} author
-   * @property {Votes} [votes]
-   */
-
-  /** @type {Story} */
+  /** @type {import("@/lib/types").Story} */
   export let story;
 
   /** @type {import("lucia-auth").User | null}*/
@@ -54,13 +37,17 @@
       story.score = story.score - 1;
     }
   };
+
+  const formattedDate = formatDate(story.created_at.toString());
 </script>
 
-<li class="flex items-center gap-5 border-b border-zinc-700 px-6 py-4 sm:gap-8">
+<li
+  class="flex items-center gap-5 border-b border-b-brand-base-content/10 px-6 py-4 sm:gap-8"
+>
   <div class="flex flex-col items-center">
     {#if !hasVoted}
       <button
-        class="rounded-md p-1 transition-colors hover:bg-zinc-600"
+        class="rounded-md p-1 transition-colors hover:bg-gray-700/60"
         on:click={() => handleVote("like")}
       >
         <ArrowUp />
@@ -74,36 +61,41 @@
     <div>
       <a
         href={story.url ? story.url : `/item/${story.id}`}
-        class="font-semibold text-zinc-200">{story.title}</a
+        class="font-semibold text-gray-100">{story.title}</a
       >
       {#if story.url}
-        <span class="text-zinc-400">({new URL(story.url).hostname})</span>
+        <span class="text-gray-400">({new URL(story.url).hostname})</span>
       {/if}
     </div>
 
-    <div class="text-zinc-200">
+    <div class="text-brand-base-content">
       <div class="inline-block">
         <span>by</span>
+
         <a
-          class="underline transition-colors hover:text-amber-300 focus:text-amber-300"
-          href="/user/{story.author}">{story.author}</a
+          class="underline transition-colors hover:text-indigo-300 focus:text-indigo-300"
+          href="/user/{story.author}"
         >
-        <time datetime={story.created_at.toString()}
-          >{formatDate(story.created_at.toString())}</time
-        >
+          {story.author}
+        </a>
+
+        <time datetime={story.created_at.toString()}>{formattedDate}</time>
       </div>
 
       <a
         href="/item/{story.id}"
-        class="border-l border-zinc-400 pl-1 underline transition-colors hover:text-amber-300 focus:text-amber-300"
-        >comments</a
+        class="border-l border-brand-base-content/30 pl-1 underline transition-colors hover:text-indigo-300 focus:text-indigo-300"
       >
+        comments
+      </a>
 
       {#if hasVoted}
         <button
-          class="border-l border-zinc-400 pl-1 underline transition-colors hover:text-amber-300"
-          on:click={() => handleVote("dislike")}>unvote</button
+          class="border-l border-brand-base-content/30 pl-1 underline transition-colors hover:text-indigo-300"
+          on:click={() => handleVote("dislike")}
         >
+          unvote
+        </button>
       {/if}
     </div>
   </div>

@@ -12,7 +12,7 @@
   on:click
   type={href ? undefined : type}
   role={href ? "button" : undefined}
-  class="rounded-md bg-yellow-400 px-3 py-1.5 text-black transition-colors enabled:hover:bg-yellow-500 enabled:focus:bg-yellow-500 disabled:opacity-50 {wfull
+  class="rounded-md bg-indigo-600 px-3 py-1.5 text-white transition-colors enabled:hover:bg-indigo-500 enabled:focus:bg-indigo-500 disabled:opacity-50 {wfull
     ? 'w-full'
     : 'w-fit'}"
   {href}

@@ -7,14 +7,12 @@
 </script>
 
 <div
-  class="flex items-center gap-2 rounded-lg bg-zinc-700 p-4 text-zinc-300"
+  class="flex items-center gap-2 rounded-lg bg-yellow-400 p-4 text-black"
   transition:fly={{ y: -4 }}
 >
-  <div
-    class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-orange-700 text-orange-200"
-  >
+  <div>
     <Warning />
     <span class="sr-only">Warning icon</span>
   </div>
-  <p class="text-sm capitalize">{message}</p>
+  <p class="text-sm font-semibold">{message}</p>
 </div>

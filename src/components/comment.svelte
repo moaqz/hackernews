@@ -20,26 +20,26 @@
 </script>
 
 <div class="py-4">
-  <p class="mb-1 text-zinc-50">
+  <p class="mb-1 text-gray-100">
     {comment.author.username} - {formatDate(comment.created_at.toString())}
   </p>
 
   <div
-    class="ml-1 space-y-2 border-l-2 border-l-zinc-700 pl-2 transition-colors hover:border-l-yellow-500"
+    class="ml-1 space-y-2 border-l-2 border-l-brand-base-content/20 pl-2 transition-colors hover:border-l-indigo-500"
   >
     <pre
-      class="whitespace-pre-wrap break-words font-sans text-gray-300">{comment.content}</pre>
+      class="whitespace-pre-wrap break-words font-sans text-gray-400">{comment.content}</pre>
 
     <div class="flex items-center gap-1">
       <a
         href="/reply?id={comment.id}&item={comment.story_id}"
-        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-400 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
+        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
       >
         <Message /> <span>Reply</span>
       </a>
 
       <button
-        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-400 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
+        class="inline-flex items-center gap-3 rounded-md px-2 py-1 text-gray-300 transition-colors hover:bg-zinc-700 hover:text-zinc-50"
         on:click={() => (repliesDisplayed = !repliesDisplayed)}
       >
         <PanelOpen /> <span>Show replies</span>
@@ -55,17 +55,17 @@
       {:then replies}
         {#each replies as reply}
           <div>
-            <p class="mb-1 text-zinc-50">
+            <p class="mb-1 text-zinc-100">
               {reply.author.username} - {formatDate(
                 reply.created_at.toString(),
               )}
             </p>
 
             <div
-              class="ml-1 space-y-2 border-l-2 border-l-zinc-700 pl-2 transition-colors hover:border-l-yellow-500"
+              class="ml-1 space-y-2 border-l-2 border-l-zinc-700 pl-2 transition-colors hover:border-l-indigo-500"
             >
               <pre
-                class="whitespace-pre-wrap break-words font-sans text-gray-300">{reply.content}</pre>
+                class="whitespace-pre-wrap break-words font-sans text-gray-400">{reply.content}</pre>
             </div>
           </div>
         {/each}

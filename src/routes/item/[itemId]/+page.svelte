@@ -12,21 +12,21 @@
   let loading = false;
 </script>
 
-<div class="border-b border-zinc-700 p-6">
+<div class="border-b border-brand-base-content/10 p-6">
   {#if data.item.url}
-    <a href={data.item.url} class="text-xl font-semibold text-zinc-200">
+    <a href={data.item.url} class="text-xl font-semibold text-gray-100">
       {data.item.title}
     </a>
-    <span class="text-zinc-400">({new URL(data.item.url).hostname})</span>
+    <span class="text-gray-400">({new URL(data.item.url).hostname})</span>
   {:else}
-    <h1 class="text-xl font-semibold text-zinc-200">{data.item.title}</h1>
+    <h1 class="text-xl font-semibold text-gray-100">{data.item.title}</h1>
   {/if}
 
-  <div class="mt-4 text-zinc-200">
+  <div class="mt-4 text-brand-base-content">
     <div class="inline-block">
       <span>by</span>
       <a
-        class="underline transition-colors hover:text-amber-300 focus:text-amber-300"
+        class="underline transition-colors hover:text-indigo-300 focus:text-indigo-300"
         href="/user/{data.item.author.username}"
       >
         {data.item.author.username}
@@ -34,7 +34,7 @@
       <time datetime={data.item.created_at.toString()}>{formattedDate}</time>
     </div>
 
-    <span class="border-l border-zinc-400 pl-1">
+    <span class="border-l border-brand-base-content/40 pl-1">
       {data.item.score}
       {data.item.score > 1 ? "votes" : "vote"}
     </span>
@@ -45,9 +45,10 @@
   {#if data.user}
     <div>
       <p class="mb-3">
-        Comment as <span class="font-semibold text-yellow-400"
-          >{data.user.username}</span
-        >
+        Comment as
+        <span class="font-semibold text-indigo-400">
+          {data.user.username}
+        </span>
       </p>
 
       <form
@@ -69,7 +70,7 @@
           name="content"
           placeholder="What are your thoughts?"
           required
-          class="resize-y rounded-sm border border-zinc-600 bg-zinc-700 px-2 py-1 outline-none focus:ring-2 focus:ring-zinc-500"
+           class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
 
         <input

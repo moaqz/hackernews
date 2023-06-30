@@ -36,14 +36,14 @@
       <Alert message={form.message} />
     {/if}
 
-    <h1 class="mb-4 text-3xl font-semibold">Reply to</h1>
+    <h1 class="mb-4 text-3xl font-semibold text-gray-100">Reply to</h1>
 
     <textarea
       id="content"
       name="content"
       placeholder="What are your thoughts?"
       required
-      class="resize-y rounded-sm border border-zinc-600 bg-zinc-700 px-2 py-1 outline-none focus:ring-2 focus:ring-zinc-500"
+      class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
     />
 
     <input type="text" value={storyId} id="storyId" name="storyId" hidden />
