@@ -42,6 +42,7 @@
     "@lucia-auth/adapter-postgresql": "1.0.1",
     "dayjs": "1.11.8",
     "drizzle-orm": "0.27.0",
+    "ioredis": "5.3.2",
     "lucia-auth": "1.8.0",
     "pg": "8.11.0"
   }
