@@ -7,10 +7,6 @@
   /** @type {import("./$types").PageData}*/
   export let data;
 
-  const formattedDate = formatDate(data.item.created_at.toString());
-
-  let loading = false;
-
   /** @type {import("./$types").SubmitFunction}*/
   const addComment = () => {
     loading = true;
@@ -20,9 +16,12 @@
       await update();
     };
   };
+
+  let loading = false;
+  const formattedDate = formatDate(data.item.created_at.toString());
 </script>
 
-<div class="border-b border-brand-base-content/10 p-6">
+<article class="border-b border-brand-base-content/10 p-6">
   {#if data.item.url}
     <a href={data.item.url} class="text-xl font-semibold text-gray-100">
       {data.item.title}
@@ -31,6 +30,10 @@
   {:else}
     <h1 class="text-xl font-semibold text-gray-100">{data.item.title}</h1>
   {/if}
+
+  <div class="mt-1 text-gray-300">
+    {data.item.content}
+  </div>
 
   <div class="mt-4 text-brand-base-content">
     <div class="inline-block">
@@ -41,7 +44,8 @@
       >
         {data.item.author.username}
       </a>
-      <time datetime={data.item.created_at.toString()}>{formattedDate}</time>
+
+      <time>{formattedDate}</time>
     </div>
 
     <span class="border-l border-brand-base-content/40 pl-1">
@@ -49,49 +53,46 @@
       {data.item.score > 1 ? "votes" : "vote"}
     </span>
   </div>
-</div>
+</article>
 
 <div class="px-6 py-4">
   {#if data.user}
-    <div>
-      <p class="mb-3">
+    <form
+      class="flex flex-col gap-3"
+      method="post"
+      action="?/comment"
+      use:enhance={addComment}
+    >
+      <label for="content">
         Comment as
         <span class="font-semibold text-indigo-400">
           {data.user.username}
         </span>
-      </p>
+      </label>
+      <textarea
+        id="content"
+        name="content"
+        placeholder="What are your thoughts?"
+        required
+        class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+      />
 
-      <form
-        class="flex flex-col gap-3"
-        method="post"
-        action="?/comment"
-        use:enhance={addComment}
-      >
-        <textarea
-          id="content"
-          name="content"
-          placeholder="What are your thoughts?"
-          required
-          class="resize-y rounded-md border border-indigo-600 bg-transparent px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+      <input
+        type="text"
+        value={data.item.id}
+        id="storyId"
+        name="storyId"
+        hidden
+      />
 
-        <input
-          type="text"
-          value={data.item.id}
-          id="storyId"
-          name="storyId"
-          hidden
-        />
-
-        <Button disabled={loading} wfull={false}>
-          {#if loading}
-            Adding comment...
-          {:else}
-            Add comment
-          {/if}
-        </Button>
-      </form>
-    </div>
+      <Button disabled={loading} wfull={false}>
+        {#if loading}
+          Adding comment...
+        {:else}
+          Add comment
+        {/if}
+      </Button>
+    </form>
   {:else}
     <Button href="/signin?redirect_url=/item/{data.item.id}" wfull={false}>
       Login to comment
