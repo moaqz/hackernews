@@ -1,38 +1,31 @@
-# create-svelte
+# A Modern Hackernews Clone
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![home](assets/home.png)
 
-## Creating a project
+## Built With
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [SvelteKit](https://kit.svelte.dev/)
+- [Drizzle ORM](https://orm.drizzle.team/)
+- [LuciaAuth](https://lucia-auth.com/?sveltekit)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Redis](https://redis.io/)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Getting Started
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Follow the below steps to run the app locally:
 
-## Developing
+1. Clone the repository by running `git clone git@github.com:moaqz/hackernews.git`.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+2. Copy the `.env.example` file to `.env` by running `cp .env.example .env` and update the credentials in the `.env` file.
 
-```bash
-npm run dev
+3. Install the dependencies by running `pnpm install`.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+4. Generate a migration with `pnpm db:generate`. This creates a new folder called `migrations` which contains the SQL queries to create the database tables.
 
-## Building
+5. Push the migration with `pnpm db:up`. If this fails (or nothing happens) and your database isn't updated with all the tables, run the SQL queries that were generated in the `migrations` folder from the previous step manually.
 
-To create a production version of your app:
+6. If you are not using the default port to run a Redis database, go to the `src/lib/redis.js` file and uncomment the section of code that includes the environment variable.
 
-```bash
-npm run build
-```
+7. Run the development server by running `pnpm dev`.
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Open http://localhost:5173/ with your browser to see the result.
