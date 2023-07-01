@@ -1,15 +1,3 @@
-# A Modern Hackernews Clone
-
-![home](assets/home.png)
-
-## Built With
-
-- [SvelteKit](https://kit.svelte.dev/)
-- [Drizzle ORM](https://orm.drizzle.team/)
-- [LuciaAuth](https://lucia-auth.com/?sveltekit)
-- [TailwindCSS](https://tailwindcss.com/)
-- [Redis](https://redis.io/)
-
 ## Getting Started
 
 Follow the below steps to run the app locally:
@@ -29,3 +17,11 @@ Follow the below steps to run the app locally:
 7. Run the development server by running `pnpm dev`.
 
 Open http://localhost:5173/ with your browser to see the result.
+
+## Built With
+
+- [SvelteKit](https://kit.svelte.dev/)
+- [Drizzle ORM](https://orm.drizzle.team/)
+- [LuciaAuth](https://lucia-auth.com/?sveltekit)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Redis](https://redis.io/)
