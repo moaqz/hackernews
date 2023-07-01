@@ -1,6 +1,7 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { auth } from "@/lib/lucia";
 import { LuciaError } from "lucia-auth";
+import { validateCredentials } from "@/lib/validations";
 
 /** @type {import("./$types").PageServerLoad} */
 export const load = async ({ locals }) => {
@@ -13,42 +14,23 @@ export const load = async ({ locals }) => {
 
 /** @type {import("./$types").Actions} */
 export const actions = {
-  default: async ({ request, locals }) => {
+  default: async ({ request, locals, url }) => {
     const form = await request.formData();
+    const username = String(form.get("username"));
+    const password = String(form.get("password"));
 
-    const username = form.get("username");
-    const password = form.get("password");
-
-    if (username == null || password == null) {
+    const validationErrors = validateCredentials(username, password);
+    if (validationErrors) {
       return fail(400, {
         invalid: true,
-        message: "missing username or password",
-      });
-    }
-
-    if (username.length > 50 || username.length < 2) {
-      return fail(400, {
-        invalid: true,
-        message: "username must be between 2 and 50 characters",
-      });
-    }
-
-    if (password.length > 50 || password.length < 8) {
-      return fail(400, {
-        invalid: true,
-        message: "password must be between 8 and 50 characters",
+        message: validationErrors,
       });
     }
 
     try {
-      const key = await auth.useKey(
-        "username",
-        username.toString(),
-        password.toString(),
-      );
+      const key = await auth.useKey("username", username, password);
 
       const session = await auth.createSession(key.userId);
-
       locals.auth.setSession(session);
     } catch (err) {
       if (err instanceof LuciaError) {
@@ -65,5 +47,8 @@ export const actions = {
 
       return fail(500);
     }
+
+    const redirectURL = url.searchParams.get("redirect_url");
+    throw redirect(303, redirectURL || "/");
   },
 };

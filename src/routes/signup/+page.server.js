@@ -1,31 +1,19 @@
 import { fail, redirect } from "@sveltejs/kit";
 import { auth } from "@/lib/lucia";
+import { validateCredentials } from "@/lib/validations";
 
 /** @type {import("./$types").Actions} */
 export const actions = {
   default: async ({ request, locals }) => {
     const form = await request.formData();
-    const username = form.get("username");
-    const password = form.get("password");
+    const username = String(form.get("username"));
+    const password = String(form.get("password"));
 
-    if (username == null || password == null) {
+    const validationErrors = validateCredentials(username, password);
+    if (validationErrors) {
       return fail(400, {
         invalid: true,
-        message: "missing username or password",
-      });
-    }
-
-    if (username.length > 50 || username.length < 2) {
-      return fail(400, {
-        invalid: true,
-        message: "username must be between 2 and 50 characters",
-      });
-    }
-
-    if (password.length > 50 || password.length < 8) {
-      return fail(400, {
-        invalid: true,
-        message: "password must be between 8 and 50 characters",
+        message: validationErrors,
       });
     }
 
@@ -33,11 +21,11 @@ export const actions = {
       const user = await auth.createUser({
         primaryKey: {
           providerId: "username",
-          providerUserId: username.toString(),
-          password: password.toString(),
+          providerUserId: username,
+          password: password,
         },
         attributes: {
-          username: username.toString(),
+          username: username,
         },
       });
       const session = await auth.createSession(user.userId);

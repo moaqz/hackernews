@@ -2,7 +2,7 @@
  * @typedef {Object} Author
  * @property {string} id
  * @property {string} username
-*/
+ */
 
 /**
  * @typedef Comment
@@ -49,6 +49,6 @@
  * @property {number} story_id
  * @property {string} story_title
  * @property {Author} author
-*/
+ */
 
 export const Types = {};

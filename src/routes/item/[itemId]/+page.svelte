@@ -10,6 +10,16 @@
   const formattedDate = formatDate(data.item.created_at.toString());
 
   let loading = false;
+
+  /** @type {import("./$types").SubmitFunction}*/
+  const addComment = () => {
+    loading = true;
+
+    return async ({ update }) => {
+      loading = false;
+      await update();
+    };
+  };
 </script>
 
 <div class="border-b border-brand-base-content/10 p-6">
@@ -55,15 +65,7 @@
         class="flex flex-col gap-3"
         method="post"
         action="?/comment"
-        use:enhance={() => {
-          loading = true;
-
-          return async ({ update }) => {
-            await update();
-
-            loading = false;
-          };
-        }}
+        use:enhance={addComment}
       >
         <textarea
           id="content"
@@ -91,7 +93,9 @@
       </form>
     </div>
   {:else}
-    <Button href="/signin" wfull={false}>Login to comment</Button>
+    <Button href="/signin?redirect_url=/item/{data.item.id}" wfull={false}>
+      Login to comment
+    </Button>
   {/if}
 </div>
 

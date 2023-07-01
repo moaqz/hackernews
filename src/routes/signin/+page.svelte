@@ -7,20 +7,23 @@
   let submitting = false;
   /** @type {import('./$types').ActionData} */
   export let form;
+
+  /** @type {import("./$types").SubmitFunction}*/
+  const login = () => {
+    submitting = true;
+
+    return async ({ update }) => {
+      submitting = false;
+      await update();
+    };
+  };
 </script>
 
 <div class="px-3 py-12">
   <form
     method="POST"
     class="mx-auto flex max-w-sm flex-col gap-4"
-    use:enhance={() => {
-      submitting = true;
-
-      return async ({ update }) => {
-        await update();
-        submitting = false;
-      };
-    }}
+    use:enhance={login}
   >
     {#if form?.invalid}
       <Alert message={form.message} />
@@ -56,7 +59,8 @@
     <a
       href="/signup"
       class="text-sm transition-colors hover:text-gray-300 hover:underline focus:text-gray-300 focus:underline"
-      >New to Hackernews? Create account</a
     >
+      New to Hackernews? Create account
+    </a>
   </form>
 </div>

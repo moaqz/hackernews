@@ -7,20 +7,23 @@
   let submitting = false;
   /** @type {import('./$types').ActionData} */
   export let form;
+
+  /** @type {import("./$types").SubmitFunction}*/
+  const signIn = () => {
+    submitting = true;
+
+    return async ({ update }) => {
+      submitting = false;
+      await update();
+    };
+  };
 </script>
 
 <div class="px-3 py-12">
   <form
     method="POST"
     class="mx-auto flex max-w-sm flex-col gap-4"
-    use:enhance={() => {
-      submitting = true;
-
-      return async ({ update }) => {
-        await update();
-        submitting = false;
-      };
-    }}
+    use:enhance={signIn}
   >
     {#if form?.invalid}
       <Alert message={form.message} />
